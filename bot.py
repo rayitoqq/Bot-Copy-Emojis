@@ -3,7 +3,7 @@ from discord.ext import commands
 import aiohttp
 
 intents = discord.Intents.default()
-intents.message_content = True  # Required for commands
+intents.message_content = True
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
@@ -14,7 +14,6 @@ async def on_ready():
 @bot.command()
 @commands.has_permissions(manage_emojis=True)
 async def stealemoji(ctx, emoji: discord.PartialEmoji, target_server_id: int):
-    # Obtener el servidor de destino
     target_server = bot.get_guild(target_server_id)
     
     if not target_server:
